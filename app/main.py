@@ -14,16 +14,17 @@ def listar_produtos():
 
     return resposta
 
+@app.route('/produtos/<produto_id>', methods=['GET'])
+def obter_produto_especifico(produto_id):
+    resposta = produtos_service.obter_produto_especifico(
+        produto_id)
+
+    return resposta
+
 @app.route('/produtos', methods=['POST'])
 def criar_produto():
     dados_produto = request.get_json()
     resposta = produtos_service.criar_produto(dados_produto)
-
-    return resposta
-
-@app.route('/produtos/<produto_id>', methods=['DELETE'])
-def remover_produto(produto_id):
-    resposta = produtos_service.remover_produto(produto_id)
 
     return resposta
 
@@ -34,9 +35,14 @@ def alterar_produto(produto_id):
 
     return resposta 
 
+@app.route('/produtos/<produto_id>', methods=['DELETE'])
+def remover_produto(produto_id):
+    resposta = produtos_service.remover_produto(produto_id)
+
+    return resposta
+
+
+
     
-
-
-
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000)
