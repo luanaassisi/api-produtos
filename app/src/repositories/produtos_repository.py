@@ -22,7 +22,7 @@ class ProdutosRepository:
             if produto['id'] == produto_id:
                 return produto
             
-    def criar_produto(self, dados_produtos: dict):
+    def criar_produto(self, dados_produto: dict):
         lista_de_ids = []
         for produto in self.produtos:
             lista_de_ids.append(int(produto['id']))
@@ -32,12 +32,11 @@ class ProdutosRepository:
 
         novo_produto = {
             'id': str(novo_id),
-            'nome': str(dados_produtos['nome']),
-            'preco': str(dados_produtos['preco'])
+            'nome': str(dados_produto['nome']),
+            'preco': str(dados_produto['preco'])
         }
 
         self.produtos.append(novo_produto)
-        print(self.produtos)
 
         return novo_produto
 

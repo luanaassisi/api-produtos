@@ -1,6 +1,6 @@
 from flask import Flask, request
-from repositories.produtos_repository import ProdutosRepository
-from services.produtos_service import ProdutosService
+from src.repositories.produtos_repository import ProdutosRepository
+from src.services.produtos_service import ProdutosService
 
 app = Flask(__name__)
 produtos_repository = ProdutosRepository()
