@@ -9,7 +9,7 @@ produtos_service = ProdutosService(produtos_repository)
 @app.route('/produtos', methods=['GET'])
 def listar_produtos():
 
-    pagina = request.args.get('pagina', 1)
+    pagina = request.args.get('pagina', '1')
     resposta = produtos_service.obter_todos_produtos(pagina)
 
     return resposta

@@ -12,8 +12,8 @@ PRODUTO_SERVICE_URL = "http://localhost:5000"
 
 @app_gtw.route('/login', methods=['POST'])
 def login():
-    username = request.json.get('username', None)
-    password = request.json.get('password', None)
+    username = request.json.get('username')
+    password = request.json.get('password')
 
    
     if username == 'admin' and password == 'admin':
@@ -21,7 +21,7 @@ def login():
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
     else:
-        return jsonify({"error": "Invalid username or password"}), 401
+        return jsonify({"message": "Usuario ou senha invalidos"}), 401
 
 
 @app_gtw.route('/produtos', methods=['GET'])
