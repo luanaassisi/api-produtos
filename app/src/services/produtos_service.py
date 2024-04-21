@@ -1,5 +1,5 @@
 import math
-from repositories.produtos_repository import ProdutosRepository
+from src.repositories.produtos_repository import ProdutosRepository
 
 
 class ProdutosService:
@@ -20,7 +20,8 @@ class ProdutosService:
 
         resposta = {
             'data': produtos, 
-            'totalDePaginas': total_de_paginas
+            'totalDePaginas': total_de_paginas,
+            'paginaAtual': pagina
         }
 
         return resposta, 200
@@ -80,7 +81,7 @@ class ProdutosService:
         }
         return resposta, 200
     
-    def alterar_produto(self, produto_id: str, dados_produto: str):
+    def alterar_produto(self, produto_id: str, dados_produto: dict):
         if 'nome' not in dados_produto or 'preco' not in dados_produto:
             resposta = {
                 'message': 'Nome ou preco nao preenchidos'
